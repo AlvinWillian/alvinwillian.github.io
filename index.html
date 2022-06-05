@@ -48,7 +48,7 @@
     <section class="jumbotron text-center">
       <img src="img/pp2.jpg" alt="Alvin Willian" width="150" class="rounded-circle img-thumbnail" />
       <h1 class="display-4">Alvin Willian</h1>
-      <p class="lead">Software Enginer</p>
+      <p class="lead">Software Enginer | Fresh Graduate</p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffffff"
@@ -72,7 +72,10 @@
             <p>Saya Alvin Willian lulusan dari SMK PGRI Telagasari jurusan Rekayasa Perangkat Lunak (Software Enginer) disekolah saya belajar tentang Software dan tak lepas dengan ngoding.</p>
           </div>
           <div class="col-md-4">
-            <p>Saya orangnya teliti terhadap suatu pekerjaan jadi sedikit lambat dalam mengerjakan sesuatu Pandai berkomunikasi,bekerjasama,dan pantang menyerah. Terkadang saat saya sudah mumet dengan pekerjaan biasanya saya beristirahat sejenak untuk merefresh pikiran seperti halnya saat ngoding.</p>
+            <p>
+              Saya orangnya teliti terhadap suatu pekerjaan, pandai berkomunikasi,bekerjasama,dan pantang menyerah. Terkadang saat saya sudah mumet dengan pekerjaan biasanya saya beristirahat
+              sejenak untuk merefresh pikiran seperti halnya saat ngoding.
+            </p>
           </div>
         </div>
       </div>
@@ -141,21 +144,31 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <div class="alert alert-primary alert-dismissible fade show d-none my-alert" role="alert">
+              <strong>Terimakasih!</strong> Pesan anda sudah saya terima.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <form name="portfolio-contact-form">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="NameHelp!" />
+                <input type="text" class="form-control" id="name" aria-describedby="NameHelp!" name="nama" />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" />
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" />
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3"></textarea>
+                <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary">Kirim</button>
+              <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
             </form>
           </div>
         </div>
@@ -180,5 +193,36 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyOQ_ngzw3beo_lE8J7Xv-h42tTrPXvJ22ROpKXYyjorXQngGK56STiJWsqL4iCr_W-/exec";
+      const form = document.forms["portfolio-contact-form"];
+      const btnKirim = document.querySelector(".btn-kirim");
+      const btnLoading = document.querySelector(".btn-loading");
+      const myAlert = document.querySelector(".my-alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // ketika tombol submit di klik
+        // tampilkan tombol loading,hilangkan tombol kirim
+        btnLoading.classList.toggle("d-none");
+        btnKirim.classList.toggle("d-none");
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            // tampilkan tombol kirim,hilangkan tombol loading
+            btnLoading.classList.toggle("d-none");
+            btnKirim.classList.toggle("d-none");
+            // tampilkan alert
+            myAlert.classList.toggle('d-none');
+            // reset formnya
+            form.reset();
+
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
