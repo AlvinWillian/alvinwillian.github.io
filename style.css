@@ -1,12 +1,180 @@
-.jumbotron {
-  padding-top: 6rem;
-  background-color: #b5c5e0;
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#projects {
-  background-color: #b5c5e0;
+/* Body dan HTML */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #d2d2d5;
 }
 
-section{
-  padding-top: 5rem;
+/* Layout Flex untuk Body */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #ffffff;
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Halaman Login */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ececec;
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #4caf50;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #45a049;
+}
+
+/* Halaman Utama */
+.bird-details {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 30px;
+  gap: 20px;
+}
+
+.bird-photo {
+  max-width: 300px;
+}
+
+.bird-photo img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bird-info {
+  max-width: 500px;
+  text-align: left;
+}
+
+.bird-info h2 {
+  font-size: 24px;
+  color: #4caf50;
+}
+
+.bird-info p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #7a7878;
+  color: white;
+  margin-top: auto;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Media Query untuk Perangkat Mobile */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 20px;
+    margin: 30px;
+  }
+
+  .bird-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bird-info {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .bird-photo img {
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+  .bird-info h2 {
+    font-size: 20px;
+  }
+
+  .bird-info p {
+    font-size: 14px;
+  }
+
+  .login-container {
+    max-width: 90%;
+  }
+
+  footer {
+    font-size: 14px;
+  }
 }
