@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3AL | Bellator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="img/logo.jpg" alt="Logo Halalman" class="logo" />
+    </header>
+
+    <div class="bird-details" id="birdDetails">
+      <!-- Info burung akan dimasukkan di sini -->
+    </div>
+
+    <footer>
+      <!-- Link TikTok -->
+      <p>
+        Follow kami di TikTok:
+        <a href="https://www.tiktok.com/@yourusername" target="_blank" rel="noopener noreferrer"> @yourusername </a>
+      </p>
+    </footer>
+
+    <script>
+      // Cek apakah pengguna sudah login
+      if (!localStorage.getItem("loggedIn")) {
+        // Jika tidak, arahkan ke halaman login
+        window.location.href = "login.html";
+      }
+
+      // Ambil data pengguna dari localStorage
+      const birdName = localStorage.getItem("birdName");
+      const birthDate = localStorage.getItem("birthDate");
+      const teamName = localStorage.getItem("teamName");
+      const whatsapp = localStorage.getItem("whatsapp");
+      const mapLink = localStorage.getItem("mapLink");
+
+      // Ambil elemen untuk menampilkan data
+      const birdDetailsDiv = document.getElementById("birdDetails");
+
+      // Buat elemen untuk menampilkan data
+      const birdPhoto = document.createElement("div");
+      birdPhoto.className = "bird-photo";
+      birdPhoto.innerHTML = `<img src="img/${birdName}.jpg" alt="Foto Burung" />`;
+
+      const birdInfo = document.createElement("div");
+      birdInfo.className = "bird-info";
+      birdInfo.innerHTML = `
+        <h2>Nama Burung: ${birdName}</h2>
+        <p>Tanggal Lahir: ${birthDate}</p>
+        <p>Nama Tim: ${teamName}</p>
+        <p>Nomor WhatsApp: <a href="https://wa.me/${whatsapp}" target="_blank">000-5660-6462</a></p>
+        <p>Alamat Pemilik Burung: <a href="${mapLink}" target="_blank" rel="noopener noreferrer"> Lihat di Google Maps </a></p>
+      `;
+
+      // Gabungkan foto dan informasi ke dalam birdDetailsDiv
+      birdDetailsDiv.appendChild(birdPhoto);
+      birdDetailsDiv.appendChild(birdInfo);
+    </script>
+  </body>
+</html>
