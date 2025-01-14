@@ -6,7 +6,7 @@ const validUsers = [
     birdName: "Alvin",
     birthDate: "1 Januari 2020",
     teamName: "3AL Bellator",
-    whatsapp: "085156606462",
+    whatsapp: "+6285156606462",
     mapLink: "https://maps.app.goo.gl/Mm37G4fXC9aQ3QhU7",
   },
   {
